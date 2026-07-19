@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#4b1972"><title>Aiva Speech Assistant</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<main>
+  <header><span class="mark">A</span><div><strong>Aiva</strong><small>Your Speech Assistant</small></div><span class="privacy">● Your exact words only</span></header>
+  <section class="hero">
+    <div class="copy"><p class="eyebrow">A voice when you need one</p><h1>Type it.<br>Aiva says it.</h1><p class="lead">Paste your speech below. Aiva speaks only your message and silently skips stage directions.</p>
+      <div class="composer"><label for="speech">Your exact message</label><textarea id="speech" placeholder="Type or paste what you want Aiva to say…"></textarea><p id="error" role="alert"></p><div class="actions"><small><span id="count">0</span> characters</small><button id="speak">▶ SPEAK MY MESSAGE</button></div></div>
+    </div>
+    <div class="avatar-card"><div class="avatar" id="avatar"><img src="assets/aiva-avatar.png" alt="Aiva"><img class="talking" src="assets/aiva-avatar-speaking.png" alt=""></div><div class="status"><i></i><span>Aiva is<br><strong id="status">ready</strong></span></div></div>
+  </section>
+  <section class="settings"><div><p class="eyebrow">Voice settings</p><h2>Choose how Aiva sounds.</h2></div><div class="controls"><label>Voice<select id="voice"><option>Device default voice</option></select></label><label>Speaking speed <b id="rateValue">0.95×</b><input id="rate" type="range" min="0.7" max="1.2" step="0.05" value="0.95"></label></div></section>
+  <aside>✓ Only your speech is spoken—never the cues. Your message stays on this device.</aside>
+  <footer>Aiva · By Kimberly Daria</footer>
+</main><script src="app.js"></script>
+</body></html>
