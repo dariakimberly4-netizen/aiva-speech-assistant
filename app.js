@@ -22,5 +22,7 @@ if('speechSynthesis'in window){load();speechSynthesis.onvoiceschanged=load}else{
 speech.value=localStorage.getItem('aiva-message')||'';count.textContent=speech.value.length;
 speech.oninput=()=>{count.textContent=speech.value.length;localStorage.setItem('aiva-message',speech.value);error.textContent=''};
 rate.oninput=()=>rateValue.textContent=Number(rate.value).toFixed(2)+'×';
-function finish(){active=false;button.textContent='▶ SPEAK MY MESSAGE';status.textContent='ready';avatar.classList.remove('speaking')}
-button.onclick=()=>{if(active){speechSynthesis.cancel();finish();return}const text=clean(speech.value);if(!text){error.textContent='Type the actual message you want Aiva to say.';return}const u=new SpeechSynthesisUtterance(text),v=voices[Number(voiceSelect.value)];if(v){u.voice=v;u.lang=v.lang}u.rate=Number(rate.value);u.pitch=1.05;u.onstart=()=>{active=true;button.textContent='■ STOP';status.textContent='speaking';avatar.classList.add('speaking')};u.onend=finish;u.onerror=finish;speechSynthesis.cancel();speechSynthesis.speak(u)};
+function finish(){active=false;document.body.classList.remove('presenting');button.textContent='▶ SPEAK MY MESSAGE';status.textContent='ready';avatar.classList.remove('speaking')}
+button.onclick=()=>{if(active){speechSynthesis.cancel();finish();return}const text=clean(speech.value);if(!text){error.textContent='Type the actual message you want Aiva to say.';return}const u=new SpeechSynthesisUtterance(text),v=voices[Number(voiceSelect.value)];if(v){u.voice=v;u.lang=v.lang}u.rate=Number(rate.value);u.pitch=1.05;u.onstart=()=>{active=true;document.body.classList.add('presenting');button.textContent='■ STOP';status.textContent='speaking';avatar.classList.add('speaking')};u.onend=finish;u.onerror=finish;speechSynthesis.cancel();speechSynthesis.speak(u)};
+
+document.querySelector('.avatar-card').addEventListener('click',()=>{if(active){speechSynthesis.cancel();finish()}});
